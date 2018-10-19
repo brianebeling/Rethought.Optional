@@ -3,6 +3,14 @@ using System.Collections.Generic;
 
 namespace Rethought.Optional
 {
+    public static class Option
+    {
+        public static Option<T> Some<T>(this T value)
+        {
+            return new Option<T>(value, true);
+        }
+    }
+
     [Serializable]
     public struct Option<T> : IEquatable<Option<T>>, IComparable<Option<T>>
     {
