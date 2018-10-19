@@ -138,48 +138,6 @@ namespace Rethought.Optional
             return HasValue ? this : alternativeOptionFactory();
         }
 
-        public TResult Match<TResult>(Func<T, TResult> some, Func<TResult> none)
-        {
-            if (some == null) throw new ArgumentNullException(nameof(some));
-            if (none == null) throw new ArgumentNullException(nameof(none));
-            return HasValue ? some(Value) : none();
-        }
-
-        public void Match(Action<T> some, Action none)
-        {
-            if (some == null) throw new ArgumentNullException(nameof(some));
-            if (none == null) throw new ArgumentNullException(nameof(none));
-
-            if (HasValue)
-            {
-                some(Value);
-            }
-            else
-            {
-                none();
-            }
-        }
-
-        public void MatchSome(Action<T> some)
-        {
-            if (some == null) throw new ArgumentNullException(nameof(some));
-
-            if (HasValue)
-            {
-                some(Value);
-            }
-        }
-
-        public void MatchNone(Action none)
-        {
-            if (none == null) throw new ArgumentNullException(nameof(none));
-
-            if (!HasValue)
-            {
-                none();
-            }
-        }
-
         private static Option<T> Some(T value)
         {
             return new Option<T>(value, true);
