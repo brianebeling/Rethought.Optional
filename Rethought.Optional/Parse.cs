@@ -3,28 +3,6 @@ using System.Globalization;
 
 namespace Rethought.Optional
 {
-    public class Test
-    {
-        public void Foo()
-        {
-            this.Print("Hello World!");
-            this.Print();
-
-            int? value = 5;
-        }
-
-        public void Print(Option<string> messageOption = default)
-        {
-            if (messageOption.TryGetValue(out var message))
-            {
-                Console.WriteLine(message);
-            }
-            else
-            {
-                Console.WriteLine("No message provided!");
-            }
-        }
-    }
     public static class Parse
     {
         public static Option<byte> ToByte(string s)

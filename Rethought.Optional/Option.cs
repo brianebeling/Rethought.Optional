@@ -138,7 +138,7 @@ namespace Rethought.Optional
             return HasValue ? this : alternativeOptionFactory();
         }
 
-        private static Option<T> Some(T value)
+        public static Option<T> Some(T value)
         {
             return new Option<T>(value, true);
         }
